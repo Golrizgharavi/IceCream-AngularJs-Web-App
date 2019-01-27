@@ -72,9 +72,7 @@
                         <i class="star off" title="Excellent" data-value="4"></i>
                         <i class="star off" title="WOW!!" data-value="5"></i>
                         <input type="text" name="Rate" id="InputRate" ng-model="reviewControllerVM.Rate" class="hiddenTxtbox" required />
-                        <div ng-show="vm.ReviewForm.$submitted && vm.ReviewForm.Rate.$touched">
-                            <div ng-show="vm.ReviewForm.Rate.$error.required">Kindly, give me a Rate!! :)</div>
-                        </div>
+                        
                     </li>
                     <li>
                         <textarea  name="taReview" ng-model="reviewControllerVM.taReview" id="taReview" rows="4" wrap="soft" placeholder="Your Review..." class="form-control" required></textarea>
