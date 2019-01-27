@@ -33,6 +33,8 @@ app.controller('reviewController', function (shopService) {
             //alert(JSON.stringify(vm.success))
             if (vm.success.s == 1) {
                 alert('Thanks for Submitting your Review ' + review.Name + ' :)');
+
+                vm.form = {}; //to reset validations messages     
                 vm.resetForm();
             }
             else {
@@ -55,7 +57,7 @@ app.controller('reviewController', function (shopService) {
         for (i = 0; i < $SubStars.length; i++)
             $($SubStars[i]).removeClass(' selected');
 
-  
+        
     }
 
 
