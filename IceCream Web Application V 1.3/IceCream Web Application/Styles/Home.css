@@ -56,15 +56,12 @@
     font-size:35px;
 }
 
-    .BGImg .pBtnMnu:hover {
+.pBtnMnu:hover {
         border-color: #67ca59;
         color: #67ca59;
     }
 
-    .BGImg .pBtnMnu:visited {
-        border-color: #fff;
-        color: #fff;
-    }
+
 
 .pImg2 .pBorder {
     background-color: #222;
@@ -81,10 +78,7 @@
     color: #000;
     border-color: #000;
 }
-.pImg3 .pBtnMnu:visited {
-        border-color: #000;
-        color: #000;
- }
+
 
 .section{
     text-align:center;
