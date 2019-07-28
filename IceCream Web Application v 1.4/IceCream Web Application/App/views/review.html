@@ -11,26 +11,30 @@
     <div class="section darkBG">
         <span class="btn-RSubmit top" id="jumpToSubmitR">Submit a Review</span>
     </div>
-    <div class="section row darkBG reviewR" ng-repeat="review in reviewControllerVM.myReviews">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 content">
-            <div class="Title"><i>{{review.fn}} {{review.ln}}</i></div>
-            <span class="rate">
-                <i class="star on" ng-if="review.rate >= 1"></i>
-                <i class="star on" ng-if="review.rate >= 2"></i>
-                <i class="star on" ng-if="review.rate >= 3"></i>
-                <i class="star on" ng-if="review.rate >= 4"></i>
-                <i class="star on" ng-if="review.rate >= 5"></i>
-            </span>
-            <span class="Text">
-                {{review.review}}
-            </span>
-            <i class="date">Date Published: {{review.date}}</i>
 
+    <div class="section  darkBG reviewR" ng-repeat="review in reviewControllerVM.myReviews">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 content">
+                <div class="Title"><i>{{review.fn}} {{review.ln}}</i></div>
+                <span class="rate">
+                    <i class="star on" ng-if="review.rate >= 1"></i>
+                    <i class="star on" ng-if="review.rate >= 2"></i>
+                    <i class="star on" ng-if="review.rate >= 3"></i>
+                    <i class="star on" ng-if="review.rate >= 4"></i>
+                    <i class="star on" ng-if="review.rate >= 5"></i>
+                </span>
+                <span class="Text">
+                    {{review.review}}
+                </span>
+                <i class="date">Date Published: {{review.date}}</i>
+
+            </div>
+            <div class="col-md-2"></div>
+            </div>
         </div>
-        <div class="col-md-2"></div>
-    </div>
-    <!--<div class="section row darkBG reviewR">
+
+        <!--<div class="section row darkBG reviewR">
         <div class="col-md-2"></div>
         <div class="col-md-8 content">
             <div class="Title"><i>Golriz Gharavi</i></div>
@@ -45,7 +49,7 @@
     </div>-->
 
 
-    <div class="reviewSub row" id="SubReviewSection">
+        <div class="reviewSub row" id="SubReviewSection">
 
             <form name="vm.ReviewForm" class="form-horizontal">
                 <div class="col-md-2"></div>
@@ -54,15 +58,15 @@
                         <div class="Title">Submit a Review</div>
                     </li>
                     <li>
-                        <input type="text" name="Name" id="Name" ng-model="reviewControllerVM.Name" class="form-control"  ng-maxlength="20" ng-minlength="2" placeholder="Your Name..." required>
+                        <input type="text" name="Name" id="Name" ng-model="reviewControllerVM.Name" class="form-control" ng-maxlength="20" ng-minlength="2" placeholder="Your Name..." required>
                         <div ng-show="vm.ReviewForm.$submitted || vm.ReviewForm.Name.$touched">
                             <div ng-show="vm.ReviewForm.Name.$error.required">Required Feild!! :)</div>
                         </div>
-                       
+
                     </li>
                     <li>
 
-                        <input type="text" name="REmail" id="REmail" ng-model="reviewControllerVM.REmail" class="form-control"  ng-maxlength="20" ng-minlength="2" placeholder="Your Email..." required ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
+                        <input type="text" name="REmail" id="REmail" ng-model="reviewControllerVM.REmail" class="form-control" ng-maxlength="20" ng-minlength="2" placeholder="Your Email..." required ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
                         <span ng-show="vm.ReviewForm.REmail.$dirty&&vm.ReviewForm.REmail.$error.pattern">Please Enter a Valid Email! :)</span>
                     </li>
                     <li id="RStars">
@@ -72,10 +76,10 @@
                         <i class="star off" title="Excellent" data-value="4"></i>
                         <i class="star off" title="WOW!!" data-value="5"></i>
                         <input type="text" name="Rate" id="InputRate" ng-model="reviewControllerVM.Rate" class="hiddenTxtbox" required />
-                        
+
                     </li>
                     <li>
-                        <textarea  name="taReview" ng-model="reviewControllerVM.taReview" id="taReview" rows="4" wrap="soft" placeholder="Your Review..." class="form-control" required></textarea>
+                        <textarea name="taReview" ng-model="reviewControllerVM.taReview" id="taReview" rows="4" wrap="soft" placeholder="Your Review..." class="form-control" required></textarea>
                         <div ng-show="vm.ReviewForm.$submitted || vm.ReviewForm.taReview.$touched">
                             <div ng-show="vm.ReviewForm.taReview.$error.required">Required Feild!! :)</div>
                         </div>
@@ -87,41 +91,41 @@
                 </ul>
                 <div class="col-md-2"></div>
 
-              
+
 
             </form>
 
-        <script>
+            <script>
 
-            var $hiddenTxtRate =$('#InputRate')
-            $('#RStars .star').on('click', function () {
-                var onStar = parseInt($(this).data('value'), 10); // The star currently selected
-                var stars = $(this).parent().children('i.star');
+                var $hiddenTxtRate = $('#InputRate')
+                $('#RStars .star').on('click', function () {
+                    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+                    var stars = $(this).parent().children('i.star');
 
-                for (i = 0; i < stars.length; i++)
-                    $(stars[i]).removeClass(' selected');
+                    for (i = 0; i < stars.length; i++)
+                        $(stars[i]).removeClass(' selected');
 
-                for (i = 0; i < onStar; i++)
-                    $(stars[i]).addClass(' selected');
+                    for (i = 0; i < onStar; i++)
+                        $(stars[i]).addClass(' selected');
 
-                 
-                $hiddenTxtRate.val(onStar);
-                $hiddenTxtRate.trigger('input');
-                $hiddenTxtRate.trigger('change');
-               
-        
-            });
 
-            //jump to submit review section
-                 
-            $("#jumpToSubmitR").click(function () {
-                $([document.documentElement, document.body]).animate({
-                    scrollTop: $("#SubReviewSection").offset().top
-                }, 1000);
-            });
-                
-        </script>
-     </div>
-   
+                    $hiddenTxtRate.val(onStar);
+                    $hiddenTxtRate.trigger('input');
+                    $hiddenTxtRate.trigger('change');
+
+
+                });
+
+                //jump to submit review section
+
+                $("#jumpToSubmitR").click(function () {
+                    $([document.documentElement, document.body]).animate({
+                        scrollTop: $("#SubReviewSection").offset().top
+                    }, 1000);
+                });
+
+            </script>
+        </div>
+
     </div>
 
